@@ -39,4 +39,7 @@ def cypher(message, key, decrypt=True):
 
     return decryptMessage
 
-print(cypher(message, keys[1]))
+help = "PLEASE"
+print(cypher("ewiaki rlpl ei pxidws x'x wo vsly fav jdc com mi'd rol ikpr fmrcj", help))
+
+# ask to print 0 then 3
