@@ -1,5 +1,3 @@
-import os  # for iterating through files in folder
-
 keys = []
 with open("keys.txt") as keyFile:
     for line in keyFile:
@@ -36,13 +34,16 @@ def cypher(message, key, decrypt=True):
 
     return decryptMessage
 
+numFiles = 5
 
-for i in range(5):
-    inputFile = f"data/message{i}.txt"
+for i in range(numFiles):
+    inputFile = f"data/message{i}.txt"  # with a formatted string, the i gets replaced by our counter i from the for loop
     outputFile = f"processed/output{i}.txt"
 
     with open(inputFile, "r", encoding="utf-8") as fin, open(outputFile, "w") as fout:  # encoding ensures we read the file with standard bytes ascii uses
         message = fin.readline().strip()  # our file is only one line so our message is just that line
-        decryptMessage = cypher(message, keys[i])
-        fout.write(decryptMessage)
-
+        decryptMessage = cypher(message, keys[i])  # using cypher function
+        fout.write(decryptMessage)  # writing to the new file
+    
+    print(f"Decrypted message{i}.txt using keyword '{keys[i]}'")
+    print(f"Saved result to {outputFile}")
