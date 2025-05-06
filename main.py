@@ -41,7 +41,7 @@ for i in range(numFiles):
     outputFile = f"processed/output{i}.txt"
 
     with open(inputFile, "r", encoding="utf-8") as fin, open(outputFile, "w") as fout:  # encoding ensures we read the file with standard bytes ascii uses
-        message = fin.readline().strip()  # our file is only one line so our message is just that line
+        message = fin.readline()  # our file is only one line so our message is just that line
         decryptMessage = cypher(message, keys[i])  # using cypher function
         fout.write(decryptMessage)  # writing to the new file
     
