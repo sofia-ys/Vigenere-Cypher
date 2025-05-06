@@ -1,7 +1,4 @@
-# extracting data from the files
-message = ""
-with open("message1.txt", encoding="utf-8") as mesFile:  # encoding ensures we read the file with standard bytes ascii uses
-    message = mesFile.readline()  # our file is only one line so our message is just that line
+import os  # for iterating through files in folder
 
 keys = []
 with open("keys.txt") as keyFile:
@@ -39,7 +36,13 @@ def cypher(message, key, decrypt=True):
 
     return decryptMessage
 
-help = "PLEASE"
-print(cypher("ewiaki rlpl ei pxidws x'x wo vsly fav jdc com mi'd rol ikpr fmrcj", help))
 
-# ask to print 0 then 3
+for i in range(5):
+    inputFile = f"data/message{i}.txt"
+    outputFile = f"processed/output{i}.txt"
+
+    with open(inputFile, "r", encoding="utf-8") as fin, open(outputFile, "w") as fout:  # encoding ensures we read the file with standard bytes ascii uses
+        message = fin.readline().strip()  # our file is only one line so our message is just that line
+        decryptMessage = cypher(message, keys[i])
+        fout.write(decryptMessage)
+
